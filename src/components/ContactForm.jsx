@@ -130,7 +130,7 @@ const ContactForm = () => {
             Solicite seu Orçamento
           </h2>
           <p className="text-zinc-400 font-light">
-            Solicite uma medição gratuita e orçamento sem compromisso
+            Solicite uma medição gratuita e orçamento sem compromisso, um de nossos especialistas entrará em contato o mais rápido possível
           </p>
         </div>
 
@@ -146,9 +146,8 @@ const ContactForm = () => {
               name="nome"
               value={formData.nome}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 bg-zinc-950 border rounded-lg focus:ring-2 focus:ring-gold-vidmar focus:border-transparent transition-all text-white placeholder-zinc-600 ${
-                errors.nome ? 'border-red-500' : 'border-zinc-800/80'
-              }`}
+              className={`w-full px-4 py-3 bg-zinc-950 border rounded-lg focus:ring-2 focus:ring-gold-vidmar focus:border-transparent transition-all text-white placeholder-zinc-600 ${errors.nome ? 'border-red-500' : 'border-zinc-800/80'
+                }`}
               placeholder="Seu nome completo"
             />
             {errors.nome && <p className="text-red-500 text-sm mt-1">{errors.nome}</p>}
@@ -165,9 +164,8 @@ const ContactForm = () => {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 bg-zinc-950 border rounded-lg focus:ring-2 focus:ring-gold-vidmar focus:border-transparent transition-all text-white placeholder-zinc-600 ${
-                errors.email ? 'border-red-500' : 'border-zinc-800/80'
-              }`}
+              className={`w-full px-4 py-3 bg-zinc-950 border rounded-lg focus:ring-2 focus:ring-gold-vidmar focus:border-transparent transition-all text-white placeholder-zinc-600 ${errors.email ? 'border-red-500' : 'border-zinc-800/80'
+                }`}
               placeholder="seu@email.com"
             />
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
@@ -184,9 +182,8 @@ const ContactForm = () => {
               name="telefone"
               value={formData.telefone}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 bg-zinc-950 border rounded-lg focus:ring-2 focus:ring-gold-vidmar focus:border-transparent transition-all text-white placeholder-zinc-600 ${
-                errors.telefone ? 'border-red-500' : 'border-zinc-800/80'
-              }`}
+              className={`w-full px-4 py-3 bg-zinc-950 border rounded-lg focus:ring-2 focus:ring-gold-vidmar focus:border-transparent transition-all text-white placeholder-zinc-600 ${errors.telefone ? 'border-red-500' : 'border-zinc-800/80'
+                }`}
               placeholder="(11) 91234-5678"
             />
             {errors.telefone && <p className="text-red-500 text-sm mt-1">{errors.telefone}</p>}
@@ -202,9 +199,8 @@ const ContactForm = () => {
               name="tipoServico"
               value={formData.tipoServico}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 bg-zinc-950 border rounded-lg focus:ring-2 focus:ring-gold-vidmar focus:border-transparent transition-all text-white ${
-                errors.tipoServico ? 'border-red-500' : 'border-zinc-800/80'
-              }`}
+              className={`w-full px-4 py-3 bg-zinc-950 border rounded-lg focus:ring-2 focus:ring-gold-vidmar focus:border-transparent transition-all text-white ${errors.tipoServico ? 'border-red-500' : 'border-zinc-800/80'
+                }`}
             >
               <option value="" className="text-zinc-600">Selecione um serviço</option>
               {serviceTypes.map((service) => (
@@ -227,9 +223,8 @@ const ContactForm = () => {
               value={formData.descricao}
               onChange={handleInputChange}
               rows={5}
-              className={`w-full px-4 py-3 bg-zinc-950 border rounded-lg focus:ring-2 focus:ring-gold-vidmar focus:border-transparent transition-all resize-none text-white placeholder-zinc-600 ${
-                errors.descricao ? 'border-red-500' : 'border-zinc-800/80'
-              }`}
+              className={`w-full px-4 py-3 bg-zinc-950 border rounded-lg focus:ring-2 focus:ring-gold-vidmar focus:border-transparent transition-all resize-none text-white placeholder-zinc-600 ${errors.descricao ? 'border-red-500' : 'border-zinc-800/80'
+                }`}
               placeholder="Descreva seu projeto em detalhes..."
             />
             {errors.descricao && <p className="text-red-500 text-sm mt-1">{errors.descricao}</p>}

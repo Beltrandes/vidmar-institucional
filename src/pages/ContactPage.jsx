@@ -10,26 +10,22 @@ const ContactPage = () => {
     {
       icon: <Phone size={24} />,
       title: 'Telefone',
-      details: ['(11) 98953-5288', '(11) 98475-2473'],
-      action: 'Ligar agora'
+      details: ['(11) 98953-5288', '(11) 98475-2473']
     },
     {
       icon: <Mail size={24} />,
       title: 'Email',
-      details: ['contato@marmorariavidmar.com.br', 'gerencia@marmorariavidmar.com.br'],
-      action: 'Enviar email'
+      details: ['contato@marmorariavidmar.com.br', 'gerencia@marmorariavidmar.com.br']
     },
     {
       icon: <MapPin size={24} />,
       title: 'Endereço',
-      details: ['Avenida Conde Francisco Matarazzo, 679', 'São Caetano do Sul, SP - Brasil'],
-      action: 'Ver no mapa'
+      details: ['Avenida Conde Francisco Matarazzo, 679', 'São Caetano do Sul, SP - Brasil']
     },
     {
       icon: <Clock size={24} />,
       title: 'Horário de Atendimento',
-      details: ['Segunda a Sexta: 8h às 18h', 'Sábado: 9h às 13h'],
-      action: ''
+      details: ['Segunda a Sexta: 8h às 18h', 'Sábado: 9h às 13h']
     }
   ];
 
@@ -103,11 +99,6 @@ const ContactPage = () => {
                       {detail}
                     </p>
                   ))}
-                  {info.action && (
-                    <button className="text-gold-vidmar text-sm font-medium mt-3 hover:underline relative z-10">
-                      {info.action}
-                    </button>
-                  )}
                 </motion.div>
               ))}
             </div>
@@ -143,7 +134,7 @@ const ContactPage = () => {
             >
               <iframe
                 title="Localização Vidmar"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.9614776884778!2d-46.57319752578548!3d-23.605714463221027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5cf441b7b8b7%3A0x65859b6dd2a1865d!2sAv.%20Conde%20Francisco%20Matarazzo%2C%20679%20-%20Funda%C3%A7%C3%A3o%2C%20S%C3%A3o%20Caetano%20do%20Sul%20-%20SP%2C%2009520-120!5e0!3m2!1spt-BR!2sbr!4v1779727047084!5m2!1spt-BR!2sbr"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.9614776884778!2d-46.57319752578548!3d-23.605714463221027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5db424673dc5%3A0xcaf89ff0ee75ddba!2sVIDMAR%20Solu%C3%A7%C3%B5es%20em%20M%C3%A1rmores%20e%20Vidros!5e0!3m2!1spt-BR!2sbr!4v1779745652732!5m2!1spt-BR!2sbr"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
