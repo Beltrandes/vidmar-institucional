@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Home, ChevronRight, Star, Award, TrendingUp } from 'lucide-react';
+import { Home, ChevronRight, Star, Award, TrendingUp, ArrowRight } from 'lucide-react';
 import PortfolioGallery from '@/components/PortfolioGallery';
 
 const PortfolioPage = () => {
@@ -153,6 +153,19 @@ const PortfolioPage = () => {
                   </div>
                 </motion.div>
               ))}
+            </div>
+
+            <div className="text-center mt-16">
+              <a
+                href="https://www.google.com/maps/place/VIDMAR+Solu%C3%A7%C3%B5es+em+Superf%C3%ADcies/@-23.6057145,-46.5731975,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce5db424673dc5:0xcaf89ff0ee75ddba!8m2!3d-23.6057194!4d-46.5706226!16s%2Fg%2F11thcdzp6h?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 border border-zinc-800 hover:border-gold-vidmar text-zinc-300 hover:text-white rounded-xl transition-all duration-300 shadow-xl group hover:bg-gold-vidmar/5"
+              >
+                <img src="https://res.cloudinary.com/dcfgsleqw/image/upload/v1779749503/google-logo-icon_zsttpd.png" alt="Google" className="h-5 w-auto object-contain brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity" onError={(e) => { e.target.src = 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png'; e.target.className = 'h-5 w-auto object-contain brightness-0 invert opacity-70 group-hover:opacity-100 transition-opacity'; }} />
+                <span className="font-semibold text-sm tracking-wide ml-1">Ver todas as avaliações no Google</span>
+                <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform text-gold-vidmar" />
+              </a>
             </div>
           </div>
         </section>
