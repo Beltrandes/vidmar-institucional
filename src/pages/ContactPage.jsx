@@ -32,7 +32,7 @@ const ContactPage = () => {
   return (
     <>
       <Helmet>
-        <title>Contato - Vidmar | Solicite seu Orçamento em Mármore</title>
+        <title>Contato - VIDMAR</title>
         <meta
           name="description"
           content="Entre em contato com a Vidmar. Solicite medição gratuita e orçamento sem compromisso para seu projeto em mármore. Telefone, email e localização."

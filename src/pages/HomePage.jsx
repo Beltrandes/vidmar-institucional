@@ -63,7 +63,7 @@ const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>Vidmar - Projetos Exclusivos em Mármores e Pedras Nobres</title>
+        <title>VIDMAR - Soluções em Superfícies</title>
         <meta
           name="description"
           content="A Vidmar desenvolve projetos exclusivos em mármores e pedras nobres com cortes milimétricos e acabamento impecável. Bancadas, lavatórios, ilhas e revestimentos de alto padrão."
@@ -71,7 +71,7 @@ const HomePage = () => {
       </Helmet>
 
       <div className="min-h-screen bg-zinc-950 text-white font-sans overflow-hidden">
-        
+
         {/* Hero Section */}
         <section className="relative h-screen flex items-center justify-center pt-20 md:pt-24 overflow-hidden">
           {/* Background Image with Overlay */}
@@ -104,11 +104,11 @@ const HomePage = () => {
               <h1 className="text-4xl md:text-7xl font-bold text-white leading-tight tracking-tight max-w-5xl mx-auto font-serif">
                 A Excelência em <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-vidmar via-amber-300 to-gold-vidmar">Projetos Exclusivos</span>
               </h1>
-              
+
               <p className="text-lg md:text-2xl text-zinc-300 max-w-3xl mx-auto font-light leading-relaxed">
                 Transformamos ambientes de alto padrão com a sofisticação das pedras mais nobres e acabamentos refinados sob medida. A assinatura de luxo que seu lar merece.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8 relative max-w-max mx-auto">
                 <Link to="/contact">
                   <Button
@@ -171,11 +171,11 @@ const HomePage = () => {
                   className="group bg-zinc-900/30 rounded-2xl p-8 text-center transition-all duration-500 border border-zinc-800/80 hover:border-gold-vidmar/45 shadow-2xl hover:shadow-[0_20px_40px_-15px_rgba(209,146,23,0.15)] relative overflow-hidden backdrop-blur-sm"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-gold-vidmar/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                  
+
                   <div className="w-16 h-16 mx-auto rounded-xl bg-zinc-900 border border-zinc-800/80 flex items-center justify-center text-gold-vidmar mb-6 shadow-inner relative z-10 transition-all duration-500 group-hover:scale-110 group-hover:bg-zinc-900/80 group-hover:border-gold-vidmar/30">
                     {stat.icon}
                   </div>
-                  
+
                   <div className="text-5xl font-bold mb-3 text-white relative z-10 tracking-tight font-serif">
                     {stat.value}
                   </div>
@@ -232,9 +232,9 @@ const HomePage = () => {
                 Inspire-se com obras concluídas que refletem precisão absoluta e sofisticação incomparável
               </p>
             </motion.div>
-            
+
             <PortfolioGallery limit={3} />
-            
+
             <div className="text-center mt-16">
               <Link to="/portfolio">
                 <Button
@@ -280,7 +280,7 @@ const HomePage = () => {
                   className="group bg-zinc-900/30 border border-zinc-800/80 hover:border-gold-vidmar/40 rounded-2xl p-8 hover:shadow-[0_20px_40px_-15px_rgba(209,146,23,0.1)] transition-all duration-500 relative overflow-hidden backdrop-blur-sm"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-gold-vidmar/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                  
+
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl bg-zinc-950 border border-zinc-800/80 flex items-center justify-center text-gold-vidmar transition-all duration-500 group-hover:scale-110 group-hover:border-gold-vidmar/30">
                       {item.icon}
@@ -309,7 +309,7 @@ const HomePage = () => {
               className="bg-gradient-to-br from-zinc-900/80 to-zinc-950/80 border border-zinc-800/60 rounded-3xl p-12 md:p-16 backdrop-blur-md shadow-2xl relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-gold-vidmar/5 rounded-full blur-[50px] pointer-events-none" />
-              
+
               <div className="space-y-8 max-w-3xl mx-auto">
                 <div className="inline-flex items-center gap-1.5 border border-gold-vidmar/30 bg-gold-vidmar/10 px-5 py-2 rounded-full">
                   <span className="text-xs uppercase tracking-widest text-gold-vidmar font-bold">Solicite um Estudo Gratuito</span>
@@ -318,11 +318,11 @@ const HomePage = () => {
                 <h2 className="text-3xl md:text-5xl font-bold text-white font-serif leading-tight">
                   Pronto para Transformar Seu Ambiente?
                 </h2>
-                
+
                 <p className="text-lg md:text-xl text-zinc-400 font-light leading-relaxed">
                   Entre em contato com nossos consultores especialistas e agende um estudo técnico completo e orçamento sem compromisso.
                 </p>
-                
+
                 <div className="pt-4">
                   <Link to="/contact">
                     <Button

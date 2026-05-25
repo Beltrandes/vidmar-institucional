@@ -36,7 +36,7 @@ const PortfolioPage = () => {
   return (
     <>
       <Helmet>
-        <title>Portfólio Vidmar - Projetos em Pedras Nobres | Galeria de Trabalhos</title>
+        <title>Projetos Executados - VIDMAR</title>
         <meta
           name="description"
           content="Veja nosso portfólio completo de projetos de alto padrão. Bancadas, lavatórios, ilhas e revestimentos executados com perfeição pela Vidmar."

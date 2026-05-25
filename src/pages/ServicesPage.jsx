@@ -85,7 +85,7 @@ const ServicesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Serviços Premium | Vidmar - Especialistas em Mármore</title>
+        <title>Serviços Exclusivos - VIDMAR</title>
         <meta
           name="description"
           content="Conheça os serviços premium da Vidmar: bancadas, lavatórios, ilhas gourmet e revestimentos em mármore e pedras nobres."
