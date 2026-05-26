@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import ScrollToTop from '@/components/ScrollToTop';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -10,7 +10,7 @@ import ContactPage from '@/pages/ContactPage';
 
 function App() {
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Header />
@@ -24,7 +24,7 @@ function App() {
         </main>
         <Footer />
       </div>
-    </Router>
+    </>
   );
 }
 
