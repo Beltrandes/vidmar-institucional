@@ -14,6 +14,9 @@ const Footer = () => {
     path: '/services',
     label: 'Serviços'
   }, {
+    path: '/materiais',
+    label: 'Materiais'
+  }, {
     path: '/contact',
     label: 'Contato'
   }];

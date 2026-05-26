@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import HomePage from '@/pages/HomePage';
 import PortfolioPage from '@/pages/PortfolioPage';
 import ServicesPage from '@/pages/ServicesPage';
+import MaterialsPage from '@/pages/MaterialsPage';
 import ContactPage from '@/pages/ContactPage';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/materiais" element={<MaterialsPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>

@@ -20,7 +20,7 @@ const PortfolioGallery = ({ limit }) => {
     },
     {
       id: 2,
-      image: 'https://res.cloudinary.com/dcfgsleqw/image/upload/v1779154375/pia-calacata-rebaixo-italiano_cryp97.jpg',
+      image: 'https://res.cloudinary.com/dcfgsleqw/image/upload/v1779759851/pia-calacata-rebaixo-italiano_xkinvo.jpg',
       title: 'Bancada em Quartzo Calacata',
       category: 'Bancadas',
       description: 'Bancada slim com rebaixo italiano',

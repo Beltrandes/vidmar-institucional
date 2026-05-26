@@ -21,6 +21,7 @@ async function run() {
     { path: '/', file: 'index.html' },
     { path: '/portfolio', file: 'portfolio/index.html' },
     { path: '/services', file: 'services/index.html' },
+    { path: '/materiais', file: 'materiais/index.html' },
     { path: '/contact', file: 'contact/index.html' },
     { path: '/404', file: '404.html' }
   ];
