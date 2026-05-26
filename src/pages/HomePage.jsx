@@ -127,7 +127,7 @@ const HomePage = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url('https://res.cloudinary.com/dcfgsleqw/image/upload/v1779154375/pia-calacata-rebaixo-italiano_cryp97.jpg')`
+              backgroundImage: `url('https://res.cloudinary.com/dcfgsleqw/image/upload/f_auto,q_auto,w_1920/v1779154375/pia-calacata-rebaixo-italiano_cryp97.jpg')`
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-zinc-950/70" />

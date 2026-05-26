@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
+const optimizeCloudinaryUrl = (url, width = 800) => {
+  if (!url || !url.includes('cloudinary.com')) return url;
+  return url.replace('/image/upload/', `/image/upload/f_auto,q_auto,w_${width}/`);
+};
+
 const PortfolioGallery = ({ limit }) => {
   const [activeFilter, setActiveFilter] = useState('Todos');
 
@@ -10,14 +15,16 @@ const PortfolioGallery = ({ limit }) => {
       image: 'https://res.cloudinary.com/dcfgsleqw/image/upload/v1779154378/pia-l-preto-sao-gabriel_woj65b.jpg',
       title: 'Bancada em Granito Preto São Gabriel',
       category: 'Bancadas',
-      description: 'Bancada em L em hotel de alto padrão'
+      description: 'Bancada em L em hotel de alto padrão',
+      alt: 'Bancada de cozinha em granito preto São Gabriel em formato L de alto padrão'
     },
     {
       id: 2,
       image: 'https://res.cloudinary.com/dcfgsleqw/image/upload/v1779154375/pia-calacata-rebaixo-italiano_cryp97.jpg',
       title: 'Bancada em Quartzo Calacata',
       category: 'Bancadas',
-      description: 'Bancada slim com rebaixo italiano'
+      description: 'Bancada slim com rebaixo italiano',
+      alt: 'Bancada de cozinha em quartzo Calacata com acabamento rebaixo italiano'
     },
     {
       id: 3,
@@ -25,35 +32,39 @@ const PortfolioGallery = ({ limit }) => {
       title: 'Lavatório em Granito Branco Alaska',
       category: 'Lavatórios',
       description: 'Lavatório caixote com cuba esculpida',
-      alt: 'lavatório em branco alaska'
+      alt: 'Lavatório esculpido caixote em granito branco Alaska para banheiro'
     },
     {
       id: 4,
       image: 'https://res.cloudinary.com/dcfgsleqw/image/upload/v1779743381/pia-churrasqueira-super-white-rodabase_g0gw6c.jpg',
       title: 'Bancada em Granito Branco Pitaya',
       category: 'Bancadas',
-      description: 'Bancada em Área Gourmet com churrasqueira embutida'
+      description: 'Bancada em Área Gourmet com churrasqueira embutida',
+      alt: 'Bancada de área gourmet em granito branco Pitaya com churrasqueira embutida'
     },
     {
       id: 5,
       image: 'https://res.cloudinary.com/dcfgsleqw/image/upload/v1779154375/lavatorio-quartzo-branco-cuba-sobrepor_s72wx1.jpg',
       title: 'Lavatório em Quartzo Branco',
       category: 'Lavatórios',
-      description: 'Lavatório com frontão alto e cuba sobrepor'
+      description: 'Lavatório com frontão alto e cuba sobrepor',
+      alt: 'Lavatório moderno em quartzo branco com cuba de sobrepor'
     },
     {
       id: 6,
       image: 'https://res.cloudinary.com/dcfgsleqw/image/upload/v1779743523/nicho-cozinha-quartzo-branco_vaya1s.jpg',
       title: 'Nicho em Quartzo Branco',
       category: 'Bancadas',
-      description: 'Bancada em nicho para cozinha'
+      description: 'Bancada em nicho para cozinha',
+      alt: 'Nicho planejado esculpido para cozinha em quartzo branco'
     },
     {
       id: 7,
       image: 'https://res.cloudinary.com/dcfgsleqw/image/upload/v1779154375/pia-balcao-branco-parana_penbzp.jpg',
       title: 'Bancadas em Mármore Branco Paraná',
       category: 'Bancadas',
-      description: 'Bancada e balcão de cozinha'
+      description: 'Bancada e balcão de cozinha',
+      alt: 'Bancada e balcão americano de cozinha em mármore nobre branco Paraná'
     },
     {
       id: 8,
@@ -61,43 +72,48 @@ const PortfolioGallery = ({ limit }) => {
       title: 'Lavatório em Granito Branco Itaúnas Levigado',
       category: 'Lavatórios',
       description: 'Design exclusivo em granito com cuba esculpida',
+      alt: 'Lavatório com design exclusivo em granito branco Itaúnas levigado e cuba esculpida'
     },
     {
       id: 9,
       image: 'https://res.cloudinary.com/dcfgsleqw/image/upload/v1779154379/pia-preto-sao-gabriel-cuba-gourmet_wf7tfg.jpg',
       title: 'Bancada em Granito Preto São Gabriel',
       category: 'Bancadas',
-      description: 'Bancada extensa com cuba gourmet e cooktop'
+      description: 'Bancada extensa com cuba gourmet e cooktop',
+      alt: 'Bancada de cozinha extensa com cooktop e cuba gourmet em granito preto São Gabriel'
     },
     {
       id: 10,
       image: 'https://res.cloudinary.com/dcfgsleqw/image/upload/v1779743745/ilha-banquetas-quartzo-branco_nhbxds.jpg',
       title: 'Ilha em Quartzo Branco',
       category: 'Ilhas',
-      description: 'Ilha em quartzo branco com pé lateral para banquetas'
+      description: 'Ilha em quartzo branco com pé lateral para banquetas',
+      alt: 'Ilha central em quartzo branco com acabamento em cascata para banquetas'
     },
     {
       id: 11,
       image: 'https://res.cloudinary.com/dcfgsleqw/image/upload/v1779154376/lavatorio-esculpido-cuba-extensa-quartzo-bege_ft1s62.jpg',
       title: 'Lavatório em Quartzo Bege',
       category: 'Lavatórios',
-      description: 'Lavatório esculpido com cuba extensa'
+      description: 'Lavatório esculpido com cuba extensa',
+      alt: 'Lavatório com cuba esculpida extensa em quartzo bege de alto padrão'
     },
     {
       id: 12,
       image: 'https://res.cloudinary.com/dcfgsleqw/image/upload/v1779743873/pia-ilha-cuba-gourmet-yellow-bamboo_r8vt98.jpg',
       title: 'Ilha em Quartzito Yellow Bamboo',
       category: 'Ilhas',
-      description: 'Bancada em ilha com cuba gourmet e cooktop'
+      description: 'Bancada em ilha com cuba gourmet e cooktop',
+      alt: 'Ilha central gourmet com cooktop em quartzito nobre Yellow Bamboo'
     },
     {
       id: 13,
       image: 'https://res.cloudinary.com/dcfgsleqw/image/upload/v1779154375/lavatorio-esculpido-nicho-branco-itaunas_qvcduf.jpg',
       title: 'Lavatório Branco Itaúnas Levigado',
       category: 'Lavatórios',
-      description: 'Lavatório embutido em nicho com cuba esculpida'
+      description: 'Lavatório embutido em nicho com cuba esculpida',
+      alt: 'Lavatório embutido em nicho de banheiro com cuba esculpida em granito branco Itaúnas'
     }
-
   ];
 
   const categories = ['Todos', 'Bancadas', 'Lavatórios', 'Ilhas', 'Pisos', 'Escadas'];
@@ -144,8 +160,9 @@ const PortfolioGallery = ({ limit }) => {
           >
             <div className="aspect-[4/3] overflow-hidden">
               <img
-                src={item.image}
+                src={optimizeCloudinaryUrl(item.image, 600)}
                 alt={item.alt || item.title}
+                loading="lazy"
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
               />
             </div>
