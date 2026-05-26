@@ -94,6 +94,13 @@ const ContactForm = () => {
 
       if (error) throw error;
 
+      // Google Ads Conversion tracking
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'ads_conversion_Fale_conosco_1', {
+          'event_timeout': 2000
+        });
+      }
+
       toast({
         title: "Orçamento enviado com sucesso!",
         description: "Entraremos em contato em breve para agendar sua medição gratuita.",

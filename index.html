@@ -12,6 +12,37 @@
 		gtag('config', 'G-6Q6W8E42KG');
 		gtag('config', 'AW-11183058594');
 	</script>
+	<!-- Google tag (gtag.js) event - delayed navigation helper -->
+	<script>
+		function gtagSendEvent(url) {
+			var callback = function () {
+				if (typeof url === 'string') {
+					window.location = url;
+				}
+			};
+			gtag('event', 'ads_conversion_Fale_conosco_1', {
+				'event_callback': callback,
+				'event_timeout': 2000
+			});
+			return false;
+		}
+
+		// Interceptar cliques em links do WhatsApp para enviar a conversão do Google Ads
+		document.addEventListener('DOMContentLoaded', function () {
+			document.addEventListener('click', function (e) {
+				var anchor = e.target.closest('a');
+				if (anchor && anchor.href && (
+					anchor.href.includes('whatsa.me') ||
+					anchor.href.includes('wa.me') ||
+					anchor.href.includes('whatsapp.com') ||
+					anchor.href.includes('api.whatsapp.com')
+				)) {
+					e.preventDefault();
+					gtagSendEvent(anchor.href);
+				}
+			});
+		});
+	</script>
 	<meta charset="UTF-8" />
 	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
