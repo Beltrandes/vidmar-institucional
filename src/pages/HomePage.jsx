@@ -63,11 +63,60 @@ const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>VIDMAR - Soluções em Superfícies</title>
+        <title>VIDMAR Marmoraria | Bancadas e Lavatórios de Mármore | São Caetano do Sul SP</title>
         <meta
           name="description"
-          content="A Vidmar desenvolve projetos exclusivos em mármores e pedras nobres com cortes milimétricos e acabamento impecável. Bancadas, lavatórios, ilhas e revestimentos de alto padrão."
+          content="A Vidmar desenvolve projetos exclusivos em mármores e pedras nobres com cortes milimétricos e acabamento impecável em São Caetano do Sul e Grande SP. Solicite orçamento gratuito."
         />
+        <link rel="canonical" href="https://marmorariavidmar.com.br/" />
+        <meta property="og:title" content="VIDMAR Marmoraria | Projetos Exclusivos em Mármore SP" />
+        <meta property="og:description" content="Marmoraria de alto padrão especializada em bancadas, lavatórios, ilhas e revestimentos de pedras nobres. Solicite orçamento gratuito." />
+        <meta property="og:image" content="https://res.cloudinary.com/dcfgsleqw/image/upload/f_auto,q_auto,w_800/v1779154375/pia-calacata-rebaixo-italiano_cryp97.jpg" />
+        <meta property="og:url" content="https://marmorariavidmar.com.br/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "VIDMAR Soluções em Superfícies",
+              "description": "Marmoraria de alto padrão especializada em bancadas, lavatórios, ilhas gourmet e revestimentos em mármore e pedras nobres.",
+              "url": "https://marmorariavidmar.com.br",
+              "telephone": ["+551198953-5288", "+551198475-2473"],
+              "email": "contato@marmorariavidmar.com.br",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Avenida Conde Francisco Matarazzo, 679",
+                "addressLocality": "São Caetano do Sul",
+                "addressRegion": "SP",
+                "addressCountry": "BR"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -23.6057145,
+                "longitude": -46.5731975
+              },
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                  "opens": "08:00",
+                  "closes": "18:00"
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": "Saturday",
+                  "opens": "09:00",
+                  "closes": "13:00"
+                }
+              ],
+              "image": "https://horizons-cdn.hostinger.com/2c2f884d-4128-4dbf-a54f-51078b01bf51/cfe143fb271ef420c70b475d9f48bcbb.png",
+              "priceRange": "$$$"
+            }
+          `}
+        </script>
       </Helmet>
 
       <div className="min-h-screen bg-zinc-950 text-white font-sans overflow-hidden">

@@ -85,11 +85,19 @@ const ServicesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Serviços Exclusivos - VIDMAR</title>
+        <title>Bancadas, Lavatórios e Ilhas em Mármore | Serviços VIDMAR</title>
         <meta
           name="description"
-          content="Conheça os serviços premium da Vidmar: bancadas, lavatórios, ilhas gourmet e revestimentos em mármore e pedras nobres."
+          content="Conheça os serviços premium de marmoraria da Vidmar. Planejamento, medição precisa e instalação impecável de bancadas, ilhas gourmet e revestimentos sob medida."
         />
+        <link rel="canonical" href="https://marmorariavidmar.com.br/services" />
+        <meta property="og:title" content="Bancadas, Lavatórios e Ilhas em Mármore | Serviços VIDMAR" />
+        <meta property="og:description" content="Conheça os serviços premium de marmoraria da Vidmar. Planejamento, medição precisa e instalação impecável sob medida." />
+        <meta property="og:image" content="https://res.cloudinary.com/dcfgsleqw/image/upload/f_auto,q_auto,w_800/v1779154375/pia-calacata-rebaixo-italiano_cryp97.jpg" />
+        <meta property="og:url" content="https://marmorariavidmar.com.br/services" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
       <div className="min-h-screen pt-24 md:pt-28 bg-zinc-950">

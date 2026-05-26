@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marmorariavidmar.com.br/sitemap.xml

@@ -32,11 +32,45 @@ const ContactPage = () => {
   return (
     <>
       <Helmet>
-        <title>Contato - VIDMAR</title>
+        <title>Contato e Orçamento Gratuito | VIDMAR Marmoraria São Caetano</title>
         <meta
           name="description"
-          content="Entre em contato com a Vidmar. Solicite medição gratuita e orçamento sem compromisso para seu projeto em mármore. Telefone, email e localização."
+          content="Entre em contato com a Vidmar. Solicite medição gratuita e orçamento sem compromisso em São Caetano do Sul e Grande SP. Telefone, WhatsApp, email e endereço."
         />
+        <link rel="canonical" href="https://marmorariavidmar.com.br/contact" />
+        <meta property="og:title" content="Contato e Orçamento Gratuito | VIDMAR Marmoraria São Caetano" />
+        <meta property="og:description" content="Entre em contato com a Vidmar. Solicite medição gratuita e orçamento sem compromisso em São Caetano do Sul e Grande SP." />
+        <meta property="og:image" content="https://res.cloudinary.com/dcfgsleqw/image/upload/f_auto,q_auto,w_800/v1779154375/pia-calacata-rebaixo-italiano_cryp97.jpg" />
+        <meta property="og:url" content="https://marmorariavidmar.com.br/contact" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Como solicito um orçamento para meu projeto?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Você pode solicitar um orçamento sem compromisso entrando em contato conosco via WhatsApp no (11) 98953-5288, pelo telefone ou enviando uma mensagem no formulário desta página."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "A medição no local realmente é gratuita?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sim! Realizamos medição técnica com profissionais especializados e equipamentos de precisão de forma totalmente gratuita em São Caetano do Sul, ABC e toda a Grande São Paulo."
+                  }
+                }
+              ]
+            }
+          `}
+        </script>
       </Helmet>
 
       <div className="min-h-screen pt-24 md:pt-28 bg-zinc-950">
