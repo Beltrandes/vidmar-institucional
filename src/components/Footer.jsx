@@ -92,18 +92,22 @@ const Footer = () => {
               Contato
             </span>
             <ul className="space-y-4">
-              <li className="flex items-start space-x-3 group">
+              <li className="flex items-start space-x-3">
                 <Phone size={20} className="mt-0.5 flex-shrink-0 text-gold-vidmar" />
-                <span className="text-sm text-zinc-600 font-medium group-hover:text-zinc-900 transition-colors">
-                  (11) 98953-5288 <br />
-                  (11) 98475-2473
-                </span>
+                <div className="flex flex-col gap-0.5">
+                  <a href="tel:+5511989535288" className="text-sm text-zinc-600 font-medium hover:text-gold-vidmar transition-colors">
+                    (11) 98953-5288
+                  </a>
+                  <a href="tel:+5511984752473" className="text-sm text-zinc-600 font-medium hover:text-gold-vidmar transition-colors">
+                    (11) 98475-2473
+                  </a>
+                </div>
               </li>
-              <li className="flex items-start space-x-3 group">
+              <li className="flex items-start space-x-3">
                 <Mail size={20} className="mt-0.5 flex-shrink-0 text-gold-vidmar" />
-                <span className="text-sm text-zinc-600 font-medium group-hover:text-zinc-900 transition-colors">
+                <a href="mailto:contato@marmorariavidmar.com.br" className="text-sm text-zinc-600 font-medium hover:text-gold-vidmar transition-colors">
                   contato@marmorariavidmar.com.br
-                </span>
+                </a>
               </li>
               <li className="flex items-start space-x-3 group">
                 <MapPin size={20} className="mt-0.5 flex-shrink-0 text-gold-vidmar" />

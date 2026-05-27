@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, CheckCircle, Loader2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/lib/customSupabaseClient';
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
@@ -101,21 +103,7 @@ const ContactForm = () => {
         });
       }
 
-      toast({
-        title: "Orçamento enviado com sucesso!",
-        description: "Entraremos em contato em breve para agendar sua medição gratuita.",
-        duration: 5000,
-        className: "bg-green-50 border-green-200"
-      });
-
-      // Reset form
-      setFormData({
-        nome: '',
-        email: '',
-        telefone: '',
-        tipoServico: '',
-        descricao: ''
-      });
+      navigate('/obrigado');
 
     } catch (error) {
       console.error('Error submitting form:', error);

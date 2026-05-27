@@ -10,22 +10,34 @@ const ContactPage = () => {
     {
       icon: <Phone size={24} />,
       title: 'Telefone',
-      details: ['(11) 98953-5288', '(11) 98475-2473']
+      details: [
+        { text: '(11) 98953-5288', href: 'tel:+5511989535288' },
+        { text: '(11) 98475-2473', href: 'tel:+5511984752473' },
+      ]
     },
     {
       icon: <Mail size={24} />,
       title: 'Email',
-      details: ['contato@marmorariavidmar.com.br', 'gerencia@marmorariavidmar.com.br']
+      details: [
+        { text: 'contato@marmorariavidmar.com.br', href: 'mailto:contato@marmorariavidmar.com.br' },
+        { text: 'gerencia@marmorariavidmar.com.br', href: 'mailto:gerencia@marmorariavidmar.com.br' },
+      ]
     },
     {
       icon: <MapPin size={24} />,
       title: 'Endereço',
-      details: ['Avenida Conde Francisco Matarazzo, 679', 'São Caetano do Sul, SP - Brasil']
+      details: [
+        { text: 'Avenida Conde Francisco Matarazzo, 679' },
+        { text: 'São Caetano do Sul, SP - Brasil' },
+      ]
     },
     {
       icon: <Clock size={24} />,
       title: 'Horário de Atendimento',
-      details: ['Segunda a Sexta: 8h às 18h', 'Sábado: 9h às 13h']
+      details: [
+        { text: 'Segunda a Sexta: 8h às 18h' },
+        { text: 'Sábado: 9h às 13h' },
+      ]
     }
   ];
 
@@ -129,9 +141,15 @@ const ContactPage = () => {
                     {info.title}
                   </h3>
                   {info.details.map((detail, idx) => (
-                    <p key={idx} className="text-zinc-400 text-sm mb-1 font-light relative z-10">
-                      {detail}
-                    </p>
+                    detail.href ? (
+                      <a key={idx} href={detail.href} className="block text-zinc-400 hover:text-gold-vidmar text-sm mb-1 font-light relative z-10 transition-colors duration-200">
+                        {detail.text}
+                      </a>
+                    ) : (
+                      <p key={idx} className="text-zinc-400 text-sm mb-1 font-light relative z-10">
+                        {detail.text}
+                      </p>
+                    )
                   ))}
                 </motion.div>
               ))}
