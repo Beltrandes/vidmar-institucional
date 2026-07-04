@@ -112,7 +112,7 @@ const HomePage = () => {
                   "closes": "13:00"
                 }
               ],
-              "image": "https://horizons-cdn.hostinger.com/2c2f884d-4128-4dbf-a54f-51078b01bf51/cfe143fb271ef420c70b475d9f48bcbb.png",
+              "image": "https://res.cloudinary.com/dcfgsleqw/image/upload/v1780195419/logos/nfw13g4asugihdryrekp.png",
               "priceRange": "$$$"
             }
           `}

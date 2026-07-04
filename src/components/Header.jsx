@@ -40,7 +40,7 @@ const Header = () => {
           {/* Logo Section */}
           <Link to="/" className="flex items-center group transition-transform duration-200 hover:scale-105 active:scale-95">
             <img
-              src="https://horizons-cdn.hostinger.com/2c2f884d-4128-4dbf-a54f-51078b01bf51/cfe143fb271ef420c70b475d9f48bcbb.png"
+              src="https://res.cloudinary.com/dcfgsleqw/image/upload/v1780195419/logos/nfw13g4asugihdryrekp.png"
               alt="Vidmar Logo"
               className="h-10 w-auto md:h-[54px] object-contain transition-all"
             />
