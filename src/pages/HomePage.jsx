@@ -159,7 +159,11 @@ const HomePage = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8 relative max-w-max mx-auto">
-                <Link to="/contact">
+                <a
+                  href="https://wa.me/5511911053203?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Button
                     size="lg"
                     className="bg-gold-vidmar hover:bg-amber-500 text-zinc-950 font-semibold text-lg px-8 py-6 rounded-xl shadow-lg shadow-gold-vidmar/20 transition-all duration-300 w-full sm:w-auto"
@@ -167,7 +171,7 @@ const HomePage = () => {
                     Solicitar Orçamento
                     <ArrowRight className="ml-2" size={20} />
                   </Button>
-                </Link>
+                </a>
                 <Link to="/portfolio">
                   <Button
                     size="lg"
