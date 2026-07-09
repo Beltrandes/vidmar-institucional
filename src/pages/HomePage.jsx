@@ -84,7 +84,7 @@ const HomePage = () => {
               "name": "VIDMAR Soluções em Superfícies",
               "description": "Marmoraria de alto padrão especializada em bancadas, lavatórios, ilhas gourmet e revestimentos em mármore e pedras nobres.",
               "url": "https://marmorariavidmar.com.br",
-              "telephone": ["+551198953-5288", "+551198475-2473"],
+              "telephone": ["+5511911053203"],
               "email": "contato@marmorariavidmar.com.br",
               "address": {
                 "@type": "PostalAddress",

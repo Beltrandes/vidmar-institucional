@@ -11,8 +11,7 @@ const ContactPage = () => {
       icon: <Phone size={24} />,
       title: 'Telefone',
       details: [
-        { text: '(11) 98953-5288', href: 'tel:+5511989535288' },
-        { text: '(11) 98475-2473', href: 'tel:+5511984752473' },
+        { text: '(11) 91105-3203', href: 'tel:+5511911053203' },
       ]
     },
     {
@@ -68,7 +67,7 @@ const ContactPage = () => {
                   "name": "Como solicito um orçamento para meu projeto?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Você pode solicitar um orçamento sem compromisso entrando em contato conosco via WhatsApp no (11) 98953-5288, pelo telefone ou enviando uma mensagem no formulário desta página."
+                    "text": "Você pode solicitar um orçamento sem compromisso entrando em contato conosco via WhatsApp no (11) 91105-3203, pelo telefone ou enviando uma mensagem no formulário desta página."
                   }
                 },
                 {

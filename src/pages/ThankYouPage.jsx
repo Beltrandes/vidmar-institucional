@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CheckCircle, MessageCircle, ArrowLeft } from 'lucide-react';
 
-const WHATSAPP_URL = 'https://wa.me/5511989535288?text=Ol%C3%A1%2C%20acabei%20de%20enviar%20um%20formul%C3%A1rio%20no%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.';
+const WHATSAPP_URL = 'https://wa.me/5511911053203?text=Ol%C3%A1%2C%20acabei%20de%20enviar%20um%20formul%C3%A1rio%20no%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.';
 
 const ThankYouPage = () => {
   return (
