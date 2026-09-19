@@ -58,3 +58,5 @@ Thumbs.db
 # Package manager lockfile variations (keep package-lock.json, but ignore temporary/local config)
 .yarn/
 .pnpm-store/
+# Config local do Claude Code
+.claude/
