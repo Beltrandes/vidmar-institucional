@@ -5,6 +5,18 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/lib/customSupabaseClient';
+import { getCampaignParams } from '@/lib/tracking';
+
+/** (11) 91234-5678 — formata enquanto digita e limita a 11 dígitos. */
+const formatPhone = (value) => {
+  const digits = value.replace(/\D/g, '').slice(0, 11);
+  if (digits.length <= 2) return digits.replace(/^(\d{0,2})/, '($1');
+  if (digits.length <= 6) return digits.replace(/^(\d{2})(\d{0,4})/, '($1) $2');
+  if (digits.length <= 10) return digits.replace(/^(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+  return digits.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+};
+
+const countDigits = (value) => value.replace(/\D/g, '').length;
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -30,6 +42,8 @@ const ContactForm = () => {
     'Outros Trabalhos'
   ];
 
+  // Apenas nome e telefone sao obrigatorios: sao os dados necessarios para
+  // retornar o contato. Exigir email e descricao aumentava muito o abandono.
   const validateForm = () => {
     const newErrors = {};
 
@@ -37,22 +51,14 @@ const ContactForm = () => {
       newErrors.nome = 'Nome é obrigatório';
     }
 
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email é obrigatório';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email inválido';
-    }
-
     if (!formData.telefone.trim()) {
       newErrors.telefone = 'Telefone é obrigatório';
+    } else if (countDigits(formData.telefone) < 10) {
+      newErrors.telefone = 'Informe um telefone com DDD';
     }
 
-    if (!formData.tipoServico) {
-      newErrors.tipoServico = 'Selecione um tipo de serviço';
-    }
-
-    if (!formData.descricao.trim()) {
-      newErrors.descricao = 'Descrição do projeto é obrigatória';
+    if (formData.email.trim() && !/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email inválido';
     }
 
     setErrors(newErrors);
@@ -61,7 +67,10 @@ const ContactForm = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData(prev => ({
+      ...prev,
+      [name]: name === 'telefone' ? formatPhone(value) : value,
+    }));
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -82,27 +91,31 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
+      const campaign = getCampaignParams();
+
       const { error } = await supabase
         .from('quotations')
         .insert([
           {
             name: formData.nome,
-            email: formData.email,
+            email: formData.email || null,
             phone: formData.telefone,
-            project_type: formData.tipoServico,
-            message: formData.descricao
+            project_type: formData.tipoServico || null,
+            message: formData.descricao || null,
+            // Permite saber qual campanha/anuncio gerou cada orcamento.
+            utm_source: campaign.utm_source || null,
+            utm_medium: campaign.utm_medium || null,
+            utm_campaign: campaign.utm_campaign || null,
+            utm_term: campaign.utm_term || null,
+            utm_content: campaign.utm_content || null,
+            gclid: campaign.gclid || null,
           }
         ]);
 
       if (error) throw error;
 
-      // Google Ads Conversion tracking
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'ads_conversion_Fale_conosco_1', {
-          'event_timeout': 2000
-        });
-      }
-
+      // A conversao e disparada na pagina /obrigado, que so carrega apos o
+      // envio bem-sucedido — assim nenhuma conversao se perde na navegacao.
       navigate('/obrigado');
 
     } catch (error) {
@@ -125,7 +138,7 @@ const ContactForm = () => {
             Solicite seu Orçamento
           </h2>
           <p className="text-zinc-400 font-light">
-            Solicite uma medição gratuita e orçamento sem compromisso, um de nossos especialistas entrará em contato o mais rápido possível
+            Medição gratuita e orçamento sem compromisso. Precisamos só do seu nome e telefone — retornamos em até 1 dia útil.
           </p>
         </div>
 
@@ -151,7 +164,7 @@ const ContactForm = () => {
           {/* Email */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-zinc-300 mb-2">
-              Email *
+              Email <span className="text-zinc-500 font-normal">(opcional)</span>
             </label>
             <input
               type="email"
@@ -179,6 +192,9 @@ const ContactForm = () => {
               onChange={handleInputChange}
               className={`w-full px-4 py-3 bg-zinc-950 border rounded-lg focus:ring-2 focus:ring-gold-vidmar focus:border-transparent transition-all text-white placeholder-zinc-600 ${errors.telefone ? 'border-red-500' : 'border-zinc-800/80'
                 }`}
+              inputMode="numeric"
+              autoComplete="tel"
+              maxLength={15}
               placeholder="(11) 91234-5678"
             />
             {errors.telefone && <p className="text-red-500 text-sm mt-1">{errors.telefone}</p>}
@@ -187,7 +203,7 @@ const ContactForm = () => {
           {/* Tipo de Serviço */}
           <div>
             <label htmlFor="tipoServico" className="block text-sm font-medium text-zinc-300 mb-2">
-              Tipo de Serviço *
+              Tipo de Serviço <span className="text-zinc-500 font-normal">(opcional)</span>
             </label>
             <select
               id="tipoServico"
@@ -210,17 +226,17 @@ const ContactForm = () => {
           {/* Descrição */}
           <div>
             <label htmlFor="descricao" className="block text-sm font-medium text-zinc-300 mb-2">
-              Descrição do Projeto *
+              Descrição do Projeto <span className="text-zinc-500 font-normal">(opcional)</span>
             </label>
             <textarea
               id="descricao"
               name="descricao"
               value={formData.descricao}
               onChange={handleInputChange}
-              rows={5}
+              rows={3}
               className={`w-full px-4 py-3 bg-zinc-950 border rounded-lg focus:ring-2 focus:ring-gold-vidmar focus:border-transparent transition-all resize-none text-white placeholder-zinc-600 ${errors.descricao ? 'border-red-500' : 'border-zinc-800/80'
                 }`}
-              placeholder="Descreva seu projeto em detalhes..."
+              placeholder="Ex.: bancada de cozinha em mármore, cerca de 3 metros"
             />
             {errors.descricao && <p className="text-red-500 text-sm mt-1">{errors.descricao}</p>}
           </div>
