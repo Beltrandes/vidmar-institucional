@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CheckCircle, MessageCircle, ArrowLeft } from 'lucide-react';
-
-const WHATSAPP_URL = 'https://wa.me/5511911053203?text=Ol%C3%A1%2C%20acabei%20de%20enviar%20um%20formul%C3%A1rio%20no%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.';
+import WhatsAppLink from '@/components/WhatsAppLink';
+import { trackConversion } from '@/lib/tracking';
 
 const ThankYouPage = () => {
+  // A conversao do formulario e registrada aqui: esta pagina so e alcancada
+  // apos o envio ter sido gravado com sucesso.
+  useEffect(() => {
+    trackConversion('form');
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -40,15 +46,13 @@ const ThankYouPage = () => {
           </p>
 
           <div className="space-y-4">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <WhatsAppLink
+              message="Olá, acabei de enviar um formulário no site e gostaria de mais informações."
               className="flex items-center justify-center gap-3 w-full bg-green-600 hover:bg-green-500 text-white py-4 px-6 rounded-xl font-semibold text-lg transition-colors duration-200 shadow-lg"
             >
               <MessageCircle size={22} />
               Falar agora pelo WhatsApp
-            </a>
+            </WhatsAppLink>
 
             <Link
               to="/"

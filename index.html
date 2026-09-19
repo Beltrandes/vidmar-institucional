@@ -12,42 +12,30 @@
 		gtag('config', 'G-6Q6W8E42KG');
 		gtag('config', 'AW-11183058594');
 	</script>
-	<!-- Google tag (gtag.js) event - delayed navigation helper -->
+	<!-- Conversao de WhatsApp para links fora do React (ex.: botao flutuante whatsa.me).
+	     Os links internos usam o componente WhatsAppLink, que ja dispara o evento;
+	     por isso aqui nao ha preventDefault: o clique segue normalmente e o evento
+	     e enviado em paralelo, sem quebrar target="_blank" no mobile. -->
 	<script>
-		function gtagSendEvent(url) {
-			var callback = function () {
-				if (typeof url === 'string') {
-					window.location = url;
-				}
-			};
-			gtag('event', 'ads_conversion_Fale_conosco_1', {
-				'event_callback': callback,
-				'event_timeout': 2000
-			});
-			return false;
-		}
+		document.addEventListener('click', function (e) {
+			var anchor = e.target.closest && e.target.closest('a');
+			if (!anchor || !anchor.href) return;
+			if (anchor.dataset.waTracked === 'true') return;
+			if (!/(whatsa\.me|wa\.me|whatsapp\.com)/.test(anchor.href)) return;
 
-		// Interceptar cliques em links do WhatsApp para enviar a conversão do Google Ads
-		document.addEventListener('DOMContentLoaded', function () {
-			document.addEventListener('click', function (e) {
-				var anchor = e.target.closest('a');
-				if (anchor && anchor.href && (
-					anchor.href.includes('whatsa.me') ||
-					anchor.href.includes('wa.me') ||
-					anchor.href.includes('whatsapp.com') ||
-					anchor.href.includes('api.whatsapp.com')
-				)) {
-					e.preventDefault();
-					gtagSendEvent(anchor.href);
-				}
-			});
+			if (typeof gtag === 'function') {
+				gtag('event', 'ads_conversion_whatsapp', { 'event_timeout': 2000 });
+			}
 		});
 	</script>
 	<meta charset="UTF-8" />
 	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>VIDMAR Marmoraria</title>
-	<link rel="preload" as="image" href="https://res.cloudinary.com/dcfgsleqw/image/upload/f_auto,q_auto,w_1920/v1779154375/pia-calacata-rebaixo-italiano_cryp97.jpg" />
+	<!-- Deve apontar exatamente para a imagem de fundo do hero da home (ver HomePage.jsx),
+	     caso contrario o preload baixa uma segunda imagem grande e piora o LCP. -->
+	<link rel="preload" as="image" fetchpriority="high"
+		href="https://res.cloudinary.com/dcfgsleqw/image/upload/f_auto,q_auto,w_1920/v1779759851/pia-calacata-rebaixo-italiano_xkinvo.jpg" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
