@@ -2,8 +2,9 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Home, ChevronRight, Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Home, ChevronRight, Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
 import ContactForm from '@/components/ContactForm';
+import WhatsAppLink from '@/components/WhatsAppLink';
 
 const ContactPage = () => {
   const contactInfo = [
@@ -152,6 +153,20 @@ const ContactPage = () => {
                   ))}
                 </motion.div>
               ))}
+            </div>
+
+            {/* Atalho para quem prefere nao preencher formulario */}
+            <div className="max-w-3xl mx-auto mb-10 text-center">
+              <WhatsAppLink
+                message="Olá, gostaria de solicitar um orçamento."
+                className="inline-flex items-center justify-center gap-3 w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white py-4 px-8 rounded-xl font-semibold text-lg transition-colors duration-200 shadow-lg"
+              >
+                <MessageCircle size={22} />
+                Prefere WhatsApp? Fale agora
+              </WhatsAppLink>
+              <p className="text-zinc-500 text-sm mt-3 font-light">
+                Resposta em minutos no horário comercial
+              </p>
             </div>
 
             {/* Contact Form */}

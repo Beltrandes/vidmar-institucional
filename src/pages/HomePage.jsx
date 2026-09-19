@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import PortfolioGallery from '@/components/PortfolioGallery';
 import ServicesSection from '@/components/ServicesSection';
+import WhatsAppLink from '@/components/WhatsAppLink';
 
 const HomePage = () => {
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
@@ -122,7 +123,7 @@ const HomePage = () => {
       <div className="min-h-screen bg-zinc-950 text-white font-sans overflow-hidden">
 
         {/* Hero Section */}
-        <section className="relative h-screen flex items-center justify-center pt-20 md:pt-24 overflow-hidden">
+        <section className="relative min-h-[88vh] md:min-h-screen flex items-center justify-center py-16 pt-24 md:pt-24 overflow-hidden">
           {/* Background Image with Overlay */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -143,7 +144,7 @@ const HomePage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
-              className="space-y-8"
+              className="space-y-5 md:space-y-8"
             >
               <div className="inline-flex items-center gap-2 bg-zinc-900/80 border border-gold-vidmar/30 px-4 py-2 rounded-full backdrop-blur-md shadow-2xl">
                 <Star size={16} className="text-gold-vidmar fill-gold-vidmar" />
@@ -154,29 +155,32 @@ const HomePage = () => {
                 A Excelência em <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-vidmar via-amber-300 to-gold-vidmar">Projetos Exclusivos</span>
               </h1>
 
-              <p className="text-lg md:text-2xl text-zinc-300 max-w-3xl mx-auto font-light leading-relaxed">
+              {/* Versão curta no mobile para que os CTAs caibam na primeira tela */}
+              <p className="text-base text-zinc-300 max-w-3xl mx-auto font-light leading-relaxed md:hidden">
+                Bancadas, lavatórios e ilhas sob medida em mármore e pedras nobres. Medição e orçamento gratuitos.
+              </p>
+              <p className="hidden md:block text-2xl text-zinc-300 max-w-3xl mx-auto font-light leading-relaxed">
                 Transformamos ambientes de alto padrão com a sofisticação das pedras mais nobres e acabamentos refinados sob medida. A assinatura de luxo que seu lar merece.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8 relative max-w-max mx-auto">
-                <a
-                  href="https://wa.me/5511911053203?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
-                  target="_blank"
-                  rel="noopener noreferrer"
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center pt-2 md:pt-8 relative max-w-max mx-auto">
+                <WhatsAppLink
+                  message="Olá, gostaria de solicitar um orçamento."
+                  className="w-full sm:w-auto"
                 >
                   <Button
                     size="lg"
-                    className="bg-gold-vidmar hover:bg-amber-500 text-zinc-950 font-semibold text-lg px-8 py-6 rounded-xl shadow-lg shadow-gold-vidmar/20 transition-all duration-300 w-full sm:w-auto"
+                    className="bg-gold-vidmar hover:bg-amber-500 text-zinc-950 font-semibold text-lg px-8 py-5 md:py-6 rounded-xl shadow-lg shadow-gold-vidmar/20 transition-all duration-300 w-full sm:w-auto"
                   >
                     Solicitar Orçamento
                     <ArrowRight className="ml-2" size={20} />
                   </Button>
-                </a>
-                <Link to="/portfolio">
+                </WhatsAppLink>
+                <Link to="/portfolio" className="w-full sm:w-auto">
                   <Button
                     size="lg"
                     variant="outline"
-                    className="bg-zinc-900/50 border-2 border-zinc-700 text-white hover:bg-zinc-800 hover:border-gold-vidmar text-lg px-8 py-6 rounded-xl transition-all duration-300 w-full sm:w-auto"
+                    className="bg-zinc-900/50 border-2 border-zinc-700 text-white hover:bg-zinc-800 hover:border-gold-vidmar text-lg px-8 py-5 md:py-6 rounded-xl transition-all duration-300 w-full sm:w-auto"
                   >
                     Ver Portfólio
                   </Button>

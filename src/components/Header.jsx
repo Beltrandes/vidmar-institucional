@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import WhatsAppLink from '@/components/WhatsAppLink';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,7 +49,8 @@ const Header = () => {
               <span className="text-xl md:text-2xl font-bold text-zinc-900 tracking-tight leading-none group-hover:text-gold-vidmar transition-colors duration-300 font-serif">
                 VIDMAR
               </span>
-              <span className="text-[9px] md:text-[11px] text-gold-vidmar tracking-widest uppercase mt-1 font-sans font-semibold">
+              {/* Escondido em telas estreitas para nao competir com o CTA do header */}
+              <span className="hidden sm:block text-[9px] md:text-[11px] text-gold-vidmar tracking-widest uppercase mt-1 font-sans font-semibold whitespace-nowrap">
                 SOLUÇÕES EM SUPERFÍCIES
               </span>
             </div>
@@ -74,16 +76,34 @@ const Header = () => {
                 />
               </Link>
             ))}
+
+            <WhatsAppLink
+              message="Olá, gostaria de solicitar um orçamento."
+              className="inline-flex items-center gap-2 bg-gold-vidmar hover:bg-amber-500 text-zinc-950 font-semibold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-gold-vidmar/20 transition-colors duration-300"
+            >
+              <MessageCircle size={17} />
+              Orçamento no WhatsApp
+            </WhatsAppLink>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-zinc-600 hover:text-zinc-900 transition-colors focus:outline-none"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+          {/* Mobile: CTA sempre visível + botão de menu */}
+          <div className="flex items-center gap-2 md:hidden">
+            <WhatsAppLink
+              message="Olá, gostaria de solicitar um orçamento."
+              className="inline-flex items-center gap-1.5 bg-gold-vidmar hover:bg-amber-500 text-zinc-950 font-semibold text-sm px-3.5 py-2 rounded-lg shadow-md shadow-gold-vidmar/20 transition-colors duration-300"
+            >
+              <MessageCircle size={16} />
+              Orçamento
+            </WhatsAppLink>
+
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 text-zinc-600 hover:text-zinc-900 transition-colors focus:outline-none"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
       </div>
 
