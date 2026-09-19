@@ -7,10 +7,11 @@ import WhatsAppLink from '@/components/WhatsAppLink';
 /**
  * Perguntas frequentes.
  *
- * Só entram aqui respostas que a Vidmar pode sustentar: cada item abaixo
- * reflete informação já publicada no site (medição gratuita, região atendida,
- * materiais, horários). Não incluir prazo, forma de pagamento ou garantia
- * sem confirmação, pois viram promessa comercial.
+ * Só entram aqui respostas que a Vidmar pode sustentar: informação já
+ * publicada no site (medição gratuita, região, materiais, horários) ou
+ * confirmada pela empresa (prazo de 15 a 20 dias; garantia de 1 ano restrita
+ * a desnível, fixação e vazamento). Prazo, garantia e forma de pagamento são
+ * promessa comercial: não alterar nem ampliar sem confirmação.
  *
  * O schema.org FAQPage é gerado a partir desta mesma lista: o Google exige
  * que o conteúdo estruturado corresponda ao que o visitante vê na página.
@@ -30,6 +31,16 @@ export const faqItems = [
     question: 'Como solicito um orçamento?',
     answer:
       'Pelo WhatsApp (11) 91105-3203, por telefone, ou pelo formulário do site. Precisamos apenas do seu nome e telefone para retornar — e respondemos em até 1 dia útil.',
+  },
+  {
+    question: 'Qual o prazo de entrega?',
+    answer:
+      'O prazo é de 15 a 20 dias. Ele é confirmado no orçamento, junto com a data prevista de instalação, para que você possa se organizar com as outras etapas da obra.',
+  },
+  {
+    question: 'Os serviços têm garantia?',
+    answer:
+      'Sim. Oferecemos 1 ano de garantia contra desnível, problemas de fixação e vazamentos. A garantia cobre especificamente esses itens de instalação, e não danos causados por uso indevido, impacto ou manutenção inadequada da pedra.',
   },
   {
     question: 'Quais materiais vocês trabalham?',
