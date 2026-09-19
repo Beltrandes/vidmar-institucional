@@ -92,13 +92,19 @@ const PortfolioGallery = ({ limit }) => {
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute bottom-0 left-0 right-0 p-8 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <span className="inline-block px-4 py-1.5 bg-gold-vidmar/20 text-gold-vidmar backdrop-blur-md rounded-full text-xs font-semibold mb-3 border border-gold-vidmar/30">
+              {/* No mobile nao existe hover: as informacoes ficam sempre
+                  visiveis. No desktop, seguem aparecendo ao passar o mouse. */}
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute bottom-0 left-0 right-0 p-5 md:p-8 text-white transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-500">
+                  <span className="inline-block px-3 py-1 md:px-4 md:py-1.5 bg-gold-vidmar/20 text-gold-vidmar backdrop-blur-md rounded-full text-xs font-semibold mb-2 md:mb-3 border border-gold-vidmar/30">
                     {item.category}
                   </span>
-                  <h3 className="text-2xl font-bold mb-2 tracking-wide">{item.title}</h3>
-                  <p className="text-zinc-300 font-light">{item.description}</p>
+                  <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2 tracking-wide">{item.title}</h3>
+                  {item.description && (
+                    <p className="text-sm md:text-base text-zinc-300 font-light line-clamp-2 md:line-clamp-none">
+                      {item.description}
+                    </p>
+                  )}
                 </div>
               </div>
             </motion.div>
