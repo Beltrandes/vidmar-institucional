@@ -24,7 +24,13 @@
 			if (!/(whatsa\.me|wa\.me|whatsapp\.com)/.test(anchor.href)) return;
 
 			if (typeof gtag === 'function') {
-				gtag('event', 'ads_conversion_whatsapp', { 'event_timeout': 2000 });
+				// Mesmo rotulo de CONVERSION_LABELS.whatsapp em src/lib/tracking.js
+				gtag('event', 'conversion', {
+					'send_to': 'AW-11183058594/ymTeCNW70P0cEKLdv9Qp',
+					'value': 1.0,
+					'currency': 'BRL',
+					'event_timeout': 2000
+				});
 			}
 		});
 	</script>

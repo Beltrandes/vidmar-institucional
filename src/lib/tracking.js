@@ -1,14 +1,19 @@
 /**
- * Eventos de conversão do Google Ads / GA4.
+ * Conversões do Google Ads.
  *
- * Cada canal tem seu próprio evento para que seja possível saber,
+ * Cada canal tem seu próprio rótulo (send_to) para que seja possível saber,
  * na campanha, se o lead veio do WhatsApp ou do formulário.
+ *
+ * Os rótulos vêm do snippet de evento que o Google Ads gera ao criar a ação
+ * de conversão (Ferramentas > Conversões > Ações de conversão).
  */
-export const CONVERSION_EVENTS = {
-  whatsapp: 'ads_conversion_whatsapp',
-  form: 'ads_conversion_formulario',
-  phone: 'ads_conversion_telefone',
+export const CONVERSION_LABELS = {
+  whatsapp: 'AW-11183058594/ymTeCNW70P0cEKLdv9Qp',
+  form: 'AW-11183058594/boIrCLi_0P0cEKLdv9Qp',
 };
+
+/** Valor atribuído a cada lead. Ajuste se quiser medir ROI por ticket médio. */
+const CONVERSION_VALUE = { value: 1.0, currency: 'BRL' };
 
 /**
  * Dispara uma conversão. Quando `url` é informada, a navegação só acontece
@@ -16,12 +21,15 @@ export const CONVERSION_EVENTS = {
  * em conexões lentas.
  */
 export const trackConversion = (channel, { url, params = {} } = {}) => {
-  const eventName = CONVERSION_EVENTS[channel];
+  const sendTo = CONVERSION_LABELS[channel];
   const go = () => {
     if (url) window.location.href = url;
   };
 
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function' || !eventName) {
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function' || !sendTo) {
+    if (!sendTo && import.meta.env.DEV) {
+      console.warn(`[dev] Conversão "${channel}" sem rótulo configurado em CONVERSION_LABELS.`);
+    }
     go();
     return;
   }
@@ -33,7 +41,9 @@ export const trackConversion = (channel, { url, params = {} } = {}) => {
     go();
   };
 
-  window.gtag('event', eventName, {
+  window.gtag('event', 'conversion', {
+    send_to: sendTo,
+    ...CONVERSION_VALUE,
     ...params,
     event_callback: url ? callback : undefined,
     event_timeout: 2000,
