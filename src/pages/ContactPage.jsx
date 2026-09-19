@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Home, ChevronRight, Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
 import ContactForm from '@/components/ContactForm';
 import WhatsAppLink from '@/components/WhatsAppLink';
+import FaqSection from '@/components/FaqSection';
 
 const ContactPage = () => {
   const contactInfo = [
@@ -57,32 +58,9 @@ const ContactPage = () => {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="pt_BR" />
         <meta name="twitter:card" content="summary_large_image" />
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Como solicito um orçamento para meu projeto?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Você pode solicitar um orçamento sem compromisso entrando em contato conosco via WhatsApp no (11) 91105-3203, pelo telefone ou enviando uma mensagem no formulário desta página."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "A medição no local realmente é gratuita?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Sim! Realizamos medição técnica com profissionais especializados e equipamentos de precisão de forma totalmente gratuita em São Caetano do Sul, ABC e toda a Grande São Paulo."
-                  }
-                }
-              ]
-            }
-          `}
-        </script>
+        {/* O schema FAQPage e emitido pelo FaqSection na home, onde as
+            perguntas aparecem para o visitante. O Google exige que o conteudo
+            estruturado corresponda ao conteudo visivel da pagina. */}
       </Helmet>
 
       <div className="min-h-screen pt-24 md:pt-28 bg-zinc-950">
@@ -212,61 +190,8 @@ const ContactPage = () => {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-16 bg-zinc-950 relative border-t border-zinc-900/50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">
-                Perguntas Frequentes
-              </h2>
-              <p className="text-xl text-zinc-400 font-light">
-                Respostas para as dúvidas mais comuns
-              </p>
-            </motion.div>
-
-            <div className="space-y-4">
-              {[
-                {
-                  question: 'A medição realmente é gratuita?',
-                  answer: 'Sim! Realizamos medição gratuita e sem compromisso em toda a região de São Paulo.'
-                },
-                {
-                  question: 'Quanto tempo leva a instalação?',
-                  answer: 'O prazo varia conforme o projeto, mas geralmente instalações residenciais levam de 1 a 3 dias.'
-                },
-                {
-                  question: 'Vocês trabalham com que tipos de mármore?',
-                  answer: 'Trabalhamos com diversas opções premium de mármore nacional e importado.'
-                },
-                {
-                  question: 'Oferecem garantia?',
-                  answer: 'Sim, oferecemos garantia de 5 anos em todos os nossos serviços e instalações.'
-                }
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-6 shadow-2xl backdrop-blur-sm"
-                >
-                  <h3 className="text-lg font-bold text-white mb-2">
-                    {faq.question}
-                  </h3>
-                  <p className="text-zinc-400 font-light">
-                    {faq.answer}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* FAQ compartilhado com a home (src/components/FaqSection.jsx) */}
+        <FaqSection />
       </div>
     </>
   );

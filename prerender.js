@@ -30,7 +30,7 @@ async function run() {
     console.log(`🌍 Renderizando rota: ${routePath}`);
 
     // Renderizar a rota usando o entry-server
-    const { html, title, meta, link } = render(routePath);
+    const { html, title, meta, link, script } = render(routePath);
 
     // Substituir a div root vazia pelo HTML pré-renderizado
     let pageHtml = template.replace('<div id="root"></div>', `<div id="root">${html}</div>`);
@@ -48,6 +48,7 @@ async function run() {
     let helmetHeadTags = '';
     if (meta) helmetHeadTags += `\n  ${meta}`;
     if (link) helmetHeadTags += `\n  ${link}`;
+    if (script) helmetHeadTags += `\n  ${script}`;
 
     if (helmetHeadTags) {
       pageHtml = pageHtml.replace('</head>', `${helmetHeadTags}\n</head>`);

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import PortfolioGallery from '@/components/PortfolioGallery';
 import ServicesSection from '@/components/ServicesSection';
 import WhatsAppLink from '@/components/WhatsAppLink';
+import FaqSection from '@/components/FaqSection';
 
 const HomePage = () => {
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
@@ -352,6 +353,9 @@ const HomePage = () => {
             </div>
           </div>
         </section>
+
+        {/* FAQ: responde as objecoes antes do CTA final */}
+        <FaqSection withSchema />
 
         {/* CTA Section */}
         <section className="py-28 bg-zinc-950 relative overflow-hidden border-t border-zinc-900/60">
