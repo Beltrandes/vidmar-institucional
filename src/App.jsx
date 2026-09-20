@@ -9,6 +9,7 @@ import ServicesPage from '@/pages/ServicesPage';
 import MaterialsPage from '@/pages/MaterialsPage';
 import ContactPage from '@/pages/ContactPage';
 import ThankYouPage from '@/pages/ThankYouPage';
+import NotFoundPage from '@/pages/NotFoundPage';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
             <Route path="/materiais" element={<MaterialsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/obrigado" element={<ThankYouPage />} />
+            {/* Catch-all: sem isto, uma URL invalida renderizava tela em branco */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
         <Footer />

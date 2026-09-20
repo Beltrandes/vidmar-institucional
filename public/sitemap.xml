@@ -1,22 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Rotas publicas indexaveis. Ao criar uma rota nova em src/App.jsx, adicione-a
+  aqui e em prerender.js.
+  Ficam de fora: /obrigado (noindex, so acessivel apos enviar o formulario)
+  e /404.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://marmorariavidmar.com.br/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://marmorariavidmar.com.br/portfolio</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://marmorariavidmar.com.br/materiais</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://marmorariavidmar.com.br/services</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://marmorariavidmar.com.br/contact</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
