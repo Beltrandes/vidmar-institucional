@@ -6,6 +6,18 @@
 # um endereco inexistente deve mesmo cair no 404, com status 404, e nao ser
 # reescrito para o index.html.
 
+# ----------------------------------------------------------------------
+# Dominio canonico: sem www
+# ----------------------------------------------------------------------
+# O site respondia igual em www e sem www, o que duplica cada pagina aos
+# olhos dos buscadores e divide os dados do Search Console. As tags
+# canonical ja apontam para a versao sem www; este 301 torna isso efetivo.
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+	RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+</IfModule>
+
 # Pagina de erro 404: serve o HTML pre-renderizado da NotFoundPage,
 # preservando o status 404 para os buscadores.
 ErrorDocument 404 /404.html
