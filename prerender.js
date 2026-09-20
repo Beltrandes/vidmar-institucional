@@ -23,6 +23,9 @@ async function run() {
     { path: '/services', file: 'services/index.html' },
     { path: '/materiais', file: 'materiais/index.html' },
     { path: '/contact', file: 'contact/index.html' },
+    // Sem um arquivo real, acessar /admin direto cairia no ErrorDocument 404
+    // do Apache. A pagina e noindex e so mostra o login sem sessao.
+    { path: '/admin', file: 'admin/index.html' },
     { path: '/404', file: '404.html' }
   ];
 

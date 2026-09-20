@@ -10,6 +10,8 @@ import MaterialsPage from '@/pages/MaterialsPage';
 import ContactPage from '@/pages/ContactPage';
 import ThankYouPage from '@/pages/ThankYouPage';
 import NotFoundPage from '@/pages/NotFoundPage';
+import AdminPage from '@/pages/AdminPage';
+import { Toaster } from '@/components/ui/toaster';
 
 function App() {
   return (
@@ -25,12 +27,16 @@ function App() {
             <Route path="/materiais" element={<MaterialsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/obrigado" element={<ThankYouPage />} />
+            {/* Area interna de gestao do portfolio, protegida por login */}
+            <Route path="/admin" element={<AdminPage />} />
             {/* Catch-all: sem isto, uma URL invalida renderizava tela em branco */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
         <Footer />
       </div>
+      {/* Sem isto, nenhum toast aparece — inclusive o erro de envio do formulario */}
+      <Toaster />
     </>
   );
 }

@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '@/lib/customSupabaseClient';
+import { PORTFOLIO_FILTERS } from '@/lib/portfolioCategories';
 
 const optimizeCloudinaryUrl = (url, width = 800) => {
   if (!url || !url.includes('cloudinary.com')) return url;
   return url.replace('/image/upload/', `/image/upload/f_auto,q_auto,w_${width}/`);
 };
 
-const categories = ['Todos', 'Bancadas', 'Lavatórios', 'Ilhas', 'Pisos', 'Escadas'];
+/** Quantos projetos aparecem por vez na pagina de portfolio. */
+const PAGE_SIZE = 9;
 
 const PortfolioGallery = ({ limit }) => {
   const [activeFilter, setActiveFilter] = useState('Todos');
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -38,16 +41,27 @@ const PortfolioGallery = ({ limit }) => {
     ? items
     : items.filter(item => item.category === activeFilter);
 
-  const displayedItems = limit ? filteredItems.slice(0, limit) : filteredItems;
+  // Na home vale o `limit` fixo; na pagina de portfolio, o "carregar mais",
+  // para que dezenas de fotos nao sejam montadas de uma vez no celular.
+  const displayedItems = limit
+    ? filteredItems.slice(0, limit)
+    : filteredItems.slice(0, visibleCount);
+
+  const restantes = filteredItems.length - displayedItems.length;
+
+  const trocarFiltro = (category) => {
+    setActiveFilter(category);
+    setVisibleCount(PAGE_SIZE);
+  };
 
   return (
     <div className="w-full">
       {!limit && (
         <div className="flex flex-wrap justify-center gap-3 mb-8">
-          {categories.map((category) => (
+          {PORTFOLIO_FILTERS.map((category) => (
             <button
               key={category}
-              onClick={() => setActiveFilter(category)}
+              onClick={() => trocarFiltro(category)}
               className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${
                 activeFilter === category
                   ? 'bg-gold-vidmar border-gold-vidmar text-white shadow-[0_4px_15px_-3px_rgba(209,146,23,0.4)]'
@@ -110,6 +124,24 @@ const PortfolioGallery = ({ limit }) => {
             </motion.div>
           ))}
         </motion.div>
+      )}
+
+      {/* Filtro sem nenhum projeto: evita a area em branco sem explicacao */}
+      {!loading && !error && filteredItems.length === 0 && (
+        <p className="text-center text-zinc-400 font-light py-16">
+          Ainda não temos projetos publicados nesta categoria.
+        </p>
+      )}
+
+      {!limit && restantes > 0 && (
+        <div className="text-center mt-12">
+          <button
+            onClick={() => setVisibleCount((n) => n + PAGE_SIZE)}
+            className="px-8 py-4 rounded-xl border border-zinc-800 hover:border-gold-vidmar bg-transparent hover:bg-gold-vidmar/5 text-zinc-300 hover:text-white font-medium transition-all duration-300"
+          >
+            Carregar mais ({restantes})
+          </button>
+        </div>
       )}
     </div>
   );
