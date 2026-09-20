@@ -10,20 +10,18 @@ export const PORTFOLIO_CATEGORIES = [
   'Cozinha',
   'Banheiro',
   'Área Gourmet',
-  'Lavanderias',
-  'Áreas Externas',
-  'Projetos Comerciais',
+  'Lavanderia',
+  'Área Externa',
+  'Projeto Comercial',
 ];
 
 /** Lista do filtro da galeria, com a opcao que mostra tudo. */
 export const PORTFOLIO_FILTERS = ['Todos', ...PORTFOLIO_CATEGORIES];
 
-/**
- * Categorias da versao anterior, organizadas por tipo de peca em vez de
- * ambiente. Itens ainda gravados com estes valores aparecem so em "Todos"
- * ate serem reclassificados no painel, que os sinaliza.
- */
-export const LEGACY_CATEGORIES = ['Bancadas', 'Lavatórios', 'Ilhas', 'Pisos', 'Escadas'];
+// Valores usados em versoes anteriores. Itens ainda gravados assim aparecem
+// so em "Todos" ate serem reclassificados no painel, que os sinaliza com ⚠:
+//   por tipo de peca: Bancadas, Lavatórios, Ilhas, Pisos, Escadas
+//   no plural:        Lavanderias, Áreas Externas, Projetos Comerciais
 
 /** Indica se a categoria gravada no item ainda e reconhecida pelos filtros. */
 export const isKnownCategory = (category) => PORTFOLIO_CATEGORIES.includes(category);
