@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Loader2, Save, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { PORTFOLIO_CATEGORIES } from '@/lib/portfolioCategories';
+import { PORTFOLIO_CATEGORIES, isKnownCategory } from '@/lib/portfolioCategories';
 
 const VAZIO = {
   title: '',
@@ -94,10 +94,23 @@ const PortfolioForm = ({ item, onSave, onCancel, salvando }) => {
             Categoria *
           </label>
           <select id="category" name="category" value={dados.category} onChange={alterar} className={campo}>
+            {/* Se o item ainda tem uma categoria antiga, ela entra na lista:
+                sem isto o select cairia na primeira opcao e trocaria a
+                categoria sem o usuario perceber ao salvar outra alteracao. */}
+            {!isKnownCategory(dados.category) && dados.category && (
+              <option value={dados.category} className="bg-zinc-950">
+                {dados.category} (categoria antiga)
+              </option>
+            )}
             {PORTFOLIO_CATEGORIES.map((c) => (
               <option key={c} value={c} className="bg-zinc-950">{c}</option>
             ))}
           </select>
+          {!isKnownCategory(dados.category) && dados.category && (
+            <p className="text-amber-400/90 text-xs mt-1">
+              Escolha um ambiente: nesta categoria o projeto não aparece em nenhum filtro.
+            </p>
+          )}
         </div>
 
         <div>

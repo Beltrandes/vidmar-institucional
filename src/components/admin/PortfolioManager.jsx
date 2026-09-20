@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Eye, EyeOff, Loader2, LogOut, Pencil, Plus, Trash2 } from 'lucide-react';
+import { AlertTriangle, Eye, EyeOff, Loader2, LogOut, Pencil, Plus, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { useAuth } from '@/contexts/SupabaseAuthContext';
 import { supabase } from '@/lib/customSupabaseClient';
 import PortfolioForm from '@/components/admin/PortfolioForm';
+import { isKnownCategory } from '@/lib/portfolioCategories';
 
 const miniatura = (url) =>
   url && url.includes('cloudinary.com')
@@ -88,6 +89,7 @@ const PortfolioManager = () => {
   };
 
   const visiveis = itens.filter((i) => i.active).length;
+  const semAmbiente = itens.filter((i) => !isKnownCategory(i.category)).length;
 
   return (
     <div className="min-h-screen pt-24 md:pt-28 pb-20 bg-zinc-950">
@@ -119,6 +121,19 @@ const PortfolioManager = () => {
             </Button>
           </div>
         </div>
+
+        {semAmbiente > 0 && (
+          <div className="mb-8 flex items-start gap-3 bg-amber-500/10 border border-amber-500/30 rounded-xl p-4">
+            <AlertTriangle size={20} className="text-amber-400 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-amber-200/90 leading-relaxed">
+              <strong className="font-semibold">
+                {semAmbiente} {semAmbiente === 1 ? 'projeto está' : 'projetos estão'} com a categoria antiga.
+              </strong>{' '}
+              Eles continuam aparecendo no site em &quot;Todos&quot;, mas não entram em nenhum filtro de ambiente.
+              Edite cada um marcado com ⚠ e escolha o ambiente correspondente.
+            </p>
+          </div>
+        )}
 
         {editando && (
           <div className="mb-8">
@@ -157,8 +172,16 @@ const PortfolioManager = () => {
 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-xs font-semibold text-gold-vidmar bg-gold-vidmar/10 border border-gold-vidmar/20 px-2 py-0.5 rounded-full">
+                    <span
+                      className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${
+                        isKnownCategory(item.category)
+                          ? 'text-gold-vidmar bg-gold-vidmar/10 border-gold-vidmar/20'
+                          : 'text-amber-400 bg-amber-500/10 border-amber-500/30'
+                      }`}
+                      title={isKnownCategory(item.category) ? undefined : 'Categoria antiga: não aparece em nenhum filtro do site'}
+                    >
                       {item.category}
+                      {!isKnownCategory(item.category) && ' ⚠'}
                     </span>
                     <span className="text-xs text-zinc-600">ordem {item.sort_order}</span>
                     {!item.active && (
