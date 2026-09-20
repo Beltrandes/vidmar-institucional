@@ -1,8 +1,48 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . index.html [L]
+# Configuracao Apache para a hospedagem (Hostinger).
+# Este arquivo fica em public/ e o Vite o copia para dist/ no build.
+#
+# IMPORTANTE: o site e pre-renderizado (SSG). Cada rota vira um arquivo real
+# (dist/materiais/index.html, etc.), entao NAO existe fallback de SPA aqui:
+# um endereco inexistente deve mesmo cair no 404, com status 404, e nao ser
+# reescrito para o index.html.
+
+# Pagina de erro 404: serve o HTML pre-renderizado da NotFoundPage,
+# preservando o status 404 para os buscadores.
+ErrorDocument 404 /404.html
+
+# ----------------------------------------------------------------------
+# Compressao
+# ----------------------------------------------------------------------
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+	AddOutputFilterByType DEFLATE application/javascript application/json
+	AddOutputFilterByType DEFLATE application/xml image/svg+xml
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Cache
+# ----------------------------------------------------------------------
+<IfModule mod_expires.c>
+	ExpiresActive On
+
+	# Assets com hash no nome podem ser cacheados por muito tempo.
+	ExpiresByType text/css                "access plus 1 year"
+	ExpiresByType application/javascript  "access plus 1 year"
+	ExpiresByType image/jpeg              "access plus 1 year"
+	ExpiresByType image/png               "access plus 1 year"
+	ExpiresByType image/webp              "access plus 1 year"
+	ExpiresByType image/svg+xml           "access plus 1 year"
+	ExpiresByType font/woff2              "access plus 1 year"
+
+	# HTML nao pode ser cacheado: e o que entrega cada deploy novo.
+	ExpiresByType text/html               "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+	<FilesMatch "\.(css|js|jpg|jpeg|png|webp|svg|woff2)$">
+		Header set Cache-Control "public, max-age=31536000, immutable"
+	</FilesMatch>
+	<FilesMatch "\.html$">
+		Header set Cache-Control "no-cache, must-revalidate"
+	</FilesMatch>
 </IfModule>
