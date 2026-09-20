@@ -61,11 +61,11 @@ const PortfolioPage = () => {
           name="description"
           content="Veja fotos reais de projetos concluídos de alto padrão executados pela Vidmar: bancadas gourmet, lavatórios esculpidos, ilhas em quartzo e mais."
         />
-        <link rel="canonical" href="https://marmorariavidmar.com.br/portfolio" />
+        <link rel="canonical" href="https://marmorariavidmar.com.br/portfolio/" />
         <meta property="og:title" content="Portfólio de Projetos em Mármore | VIDMAR Marmoraria SP" />
         <meta property="og:description" content="Veja fotos reais de projetos concluídos de alto padrão executados pela Vidmar: bancadas gourmet, lavatórios esculpidos, ilhas e mais." />
         <meta property="og:image" content="https://res.cloudinary.com/dcfgsleqw/image/upload/f_auto,q_auto,w_800/v1779154378/pia-l-preto-sao-gabriel_woj65b.jpg" />
-        <meta property="og:url" content="https://marmorariavidmar.com.br/portfolio" />
+        <meta property="og:url" content="https://marmorariavidmar.com.br/portfolio/" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="pt_BR" />
         <meta name="twitter:card" content="summary_large_image" />

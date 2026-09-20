@@ -190,11 +190,11 @@ const MaterialsPage = () => {
           name="description"
           content="Conheça os diferenciais técnicos e estéticos dos principais materiais do mercado: Mármores, Granitos, Quartzos, Quartzitos e Lâminas Sinterizadas. Escolha a pedra ideal para o seu projeto."
         />
-        <link rel="canonical" href="https://marmorariavidmar.com.br/materiais" />
+        <link rel="canonical" href="https://marmorariavidmar.com.br/materiais/" />
         <meta property="og:title" content="Materiais Nobres e Superfícies | VIDMAR Marmoraria" />
         <meta property="og:description" content="Guia técnico e comparativo completo sobre mármores, quartzitos, lâminas sinterizadas e quartzos. Escolha com inteligência o material para sua bancada de cozinha ou banheiro." />
         <meta property="og:image" content="https://res.cloudinary.com/dcfgsleqw/image/upload/f_auto,q_auto,w_800/v1779154375/pia-calacata-rebaixo-italiano_cryp97.jpg" />
-        <meta property="og:url" content="https://marmorariavidmar.com.br/materiais" />
+        <meta property="og:url" content="https://marmorariavidmar.com.br/materiais/" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="pt_BR" />
       </Helmet>

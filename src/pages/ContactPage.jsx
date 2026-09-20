@@ -50,11 +50,11 @@ const ContactPage = () => {
           name="description"
           content="Entre em contato com a Vidmar. Solicite medição gratuita e orçamento sem compromisso em São Caetano do Sul e Grande SP. Telefone, WhatsApp, email e endereço."
         />
-        <link rel="canonical" href="https://marmorariavidmar.com.br/contact" />
+        <link rel="canonical" href="https://marmorariavidmar.com.br/contact/" />
         <meta property="og:title" content="Contato e Orçamento Gratuito | VIDMAR Marmoraria São Caetano" />
         <meta property="og:description" content="Entre em contato com a Vidmar. Solicite medição gratuita e orçamento sem compromisso em São Caetano do Sul e Grande SP." />
         <meta property="og:image" content="https://res.cloudinary.com/dcfgsleqw/image/upload/f_auto,q_auto,w_800/v1779154375/pia-calacata-rebaixo-italiano_cryp97.jpg" />
-        <meta property="og:url" content="https://marmorariavidmar.com.br/contact" />
+        <meta property="og:url" content="https://marmorariavidmar.com.br/contact/" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="pt_BR" />
         <meta name="twitter:card" content="summary_large_image" />
