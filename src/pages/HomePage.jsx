@@ -8,6 +8,7 @@ import PortfolioGallery from '@/components/PortfolioGallery';
 import ServicesSection from '@/components/ServicesSection';
 import WhatsAppLink from '@/components/WhatsAppLink';
 import FaqSection from '@/components/FaqSection';
+import { CATALOG_URL } from '@/lib/catalogUrl';
 
 const HomePage = () => {
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
@@ -293,7 +294,11 @@ const HomePage = () => {
 
             <PortfolioGallery limit={3} />
 
-            <div className="text-center mt-16">
+            <div className="text-center mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href={CATALOG_URL} className="inline-flex items-center justify-center bg-gold-vidmar hover:bg-amber-500 text-zinc-950 font-semibold px-8 py-4 text-lg rounded-xl transition-colors duration-300 shadow-xl">
+                Ver Catálogo de Obras com Fichas Técnicas
+                <ArrowRight className="ml-2" size={20} />
+              </a>
               <Link to="/portfolio">
                 <Button
                   size="lg"

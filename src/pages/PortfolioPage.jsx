@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Home, ChevronRight, Star, Award, TrendingUp, ArrowRight, MessageCircle } from 'lucide-react';
 import PortfolioGallery from '@/components/PortfolioGallery';
 import WhatsAppLink from '@/components/WhatsAppLink';
+import { CATALOG_URL } from '@/lib/catalogUrl';
 
 const PortfolioPage = () => {
   // Somente depoimentos REAIS de clientes, transcritos das avaliações do Google.
@@ -136,6 +137,21 @@ const PortfolioPage = () => {
         {/* Portfolio Gallery */}
         <section className="py-24 bg-zinc-950">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a
+              href={CATALOG_URL}
+              className="group mb-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 rounded-2xl border border-gold-vidmar/30 bg-gold-vidmar/5 hover:bg-gold-vidmar/10 p-6 md:p-8 transition-colors duration-300"
+            >
+              <div>
+                <p className="text-gold-vidmar text-xs font-semibold uppercase tracking-widest mb-1">Novo</p>
+                <h3 className="text-xl md:text-2xl font-bold text-white font-serif">Catálogo Virtual de Obras</h3>
+                <p className="text-zinc-400 mt-1">Filtre por ambiente, tipo de pedra e acabamento, veja várias fotos de cada obra e envie as suas favoritas pelo WhatsApp.</p>
+              </div>
+              <span className="inline-flex items-center gap-2 shrink-0 bg-gold-vidmar text-zinc-950 font-semibold px-6 py-3 rounded-xl">
+                Abrir catálogo
+                <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
+              </span>
+            </a>
+
             <PortfolioGallery />
 
             {/* CTA logo apos a galeria: e o ponto de maior intencao da pagina */}

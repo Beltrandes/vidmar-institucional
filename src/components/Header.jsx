@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import WhatsAppLink from '@/components/WhatsAppLink';
+import { CATALOG_URL } from '@/lib/catalogUrl';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -77,6 +78,13 @@ const Header = () => {
               </Link>
             ))}
 
+            <a
+              href={CATALOG_URL}
+              className="text-sm font-semibold tracking-wide text-gold-vidmar hover:text-amber-600 transition-colors duration-300 py-2 whitespace-nowrap"
+            >
+              Catálogo de Obras
+            </a>
+
             <WhatsAppLink
               message="Olá, gostaria de solicitar um orçamento."
               className="inline-flex items-center gap-2 bg-gold-vidmar hover:bg-amber-500 text-zinc-950 font-semibold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-gold-vidmar/20 transition-colors duration-300"
@@ -132,6 +140,12 @@ const Header = () => {
                   {link.label}
                 </Link>
               ))}
+              <a
+                href={CATALOG_URL}
+                className="block px-4 py-4 rounded-xl text-base font-semibold text-gold-vidmar bg-gold-vidmar/10 border border-gold-vidmar/20"
+              >
+                Catálogo de Obras →
+              </a>
             </nav>
           </motion.div>
         )}
