@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, MessageCircle } from 'lucide-react';
+import { Menu, X, MessageCircle, Images } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import WhatsAppLink from '@/components/WhatsAppLink';
 import { CATALOG_URL } from '@/lib/catalogUrl';
@@ -46,7 +46,7 @@ const Header = () => {
               alt="Vidmar Logo"
               className="h-10 w-auto md:h-[54px] object-contain transition-all"
             />
-            <div className="flex flex-col ml-3">
+            <div className="hidden min-[420px]:flex flex-col ml-3">
               <span className="text-xl md:text-2xl font-bold text-zinc-900 tracking-tight leading-none group-hover:text-gold-vidmar transition-colors duration-300 font-serif">
                 VIDMAR
               </span>
@@ -58,7 +58,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-5 lg:space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -80,9 +80,12 @@ const Header = () => {
 
             <a
               href={CATALOG_URL}
-              className="text-sm font-semibold tracking-wide text-gold-vidmar hover:text-amber-600 transition-colors duration-300 py-2 whitespace-nowrap"
+              className="group relative inline-flex items-center gap-2 border-2 border-gold-vidmar text-zinc-900 bg-gold-vidmar/10 hover:bg-gold-vidmar font-bold text-sm px-4 py-2 rounded-xl transition-colors duration-300 whitespace-nowrap"
             >
-              Catálogo de Obras
+              <Images size={17} className="text-gold-vidmar group-hover:text-zinc-950" />
+              <span className="lg:hidden">Catálogo</span>
+              <span className="hidden lg:inline">Catálogo de Obras</span>
+              <span className="absolute -top-2 -right-2 bg-zinc-900 text-gold-vidmar text-[9px] font-bold tracking-wider uppercase px-1.5 py-0.5 rounded-full">Novo</span>
             </a>
 
             <WhatsAppLink
@@ -96,6 +99,15 @@ const Header = () => {
 
           {/* Mobile: CTA sempre visível + botão de menu */}
           <div className="flex items-center gap-2 md:hidden">
+            <a
+              href={CATALOG_URL}
+              className="relative inline-flex items-center gap-1.5 border-2 border-gold-vidmar bg-gold-vidmar/10 text-zinc-900 font-bold text-sm px-3 py-1.5 rounded-lg"
+            >
+              <Images size={16} className="text-gold-vidmar" />
+              Catálogo
+              <span className="absolute -top-2 -right-1.5 bg-zinc-900 text-gold-vidmar text-[8px] font-bold tracking-wider uppercase px-1 py-0.5 rounded-full">Novo</span>
+            </a>
+
             <WhatsAppLink
               message="Olá, gostaria de solicitar um orçamento."
               className="inline-flex items-center gap-1.5 bg-gold-vidmar hover:bg-amber-500 text-zinc-950 font-semibold text-sm px-3.5 py-2 rounded-lg shadow-md shadow-gold-vidmar/20 transition-colors duration-300"
@@ -142,9 +154,9 @@ const Header = () => {
               ))}
               <a
                 href={CATALOG_URL}
-                className="block px-4 py-4 rounded-xl text-base font-semibold text-gold-vidmar bg-gold-vidmar/10 border border-gold-vidmar/20"
+                className="flex items-center justify-between px-4 py-4 rounded-xl text-base font-bold text-zinc-950 bg-gold-vidmar shadow-md"
               >
-                Catálogo de Obras →
+                Catálogo de Obras <span aria-hidden="true">→</span>
               </a>
             </nav>
           </motion.div>
